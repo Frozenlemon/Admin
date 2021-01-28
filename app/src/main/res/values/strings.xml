@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Admin</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="tab_text_1">Order</string>
+    <string name="tab_text_2">Staff</string>
+    <string name="tab_text_3">Product</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,30 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".NewProduct">
+
     <EditText
         android:id="@+id/edit_text_product_title"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
         android:hint="Title"
-        android:inputType="text"/>
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_product_photo" />
+
     <EditText
         android:id="@+id/edit_text_product_description"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:hint="description"
-        android:inputType="textMultiLine"/>
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="@+id/edit_text_product_title"
+        app:layout_constraintStart_toStartOf="@+id/edit_text_product_title"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_product_title" />
+
     <EditText
         android:id="@+id/edit_text_product_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="price"
+        android:inputType="text"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="@+id/edit_text_product_description"
+        app:layout_constraintStart_toStartOf="@+id/edit_text_product_category"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_product_category" />
+
+    <EditText
+        android:id="@+id/edit_text_product_category"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="category"
+        android:inputType="text"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintStart_toStartOf="@+id/edit_text_product_description"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_product_description" />
+
+    <EditText
+        android:id="@+id/edit_text_product_sub_category"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="sub-category"
+        android:inputType="text"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="@+id/edit_text_product_category"
+        app:layout_constraintEnd_toEndOf="@+id/edit_text_product_description"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/edit_text_product_category" />
+
+    <ImageView
+        android:id="@+id/add_prodduct_photo1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="price"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:inputType="text"/>
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/edit_text_product_price"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_product_price"
+        tools:srcCompat="@tools:sample/avatars" />
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/add_product_photo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/edit_text_product_price"
+        app:layout_constraintTop_toTopOf="@+id/add_prodduct_photo1"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/add_product_photo3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="@+id/add_prodduct_photo1"
+        app:layout_constraintTop_toBottomOf="@+id/add_prodduct_photo1"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/add_product_photo4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/add_product_photo2"
+        app:layout_constraintTop_toTopOf="@+id/add_product_photo3"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/add_product_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
