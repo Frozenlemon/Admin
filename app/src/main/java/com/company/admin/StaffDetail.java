@@ -30,7 +30,7 @@ import java.util.Map;
 
 public class StaffDetail extends AppCompatActivity {
 
-    private TextView name, role, email, phone;
+    private TextView name, role, email, phone, activeJobs;
     private EditText nameEdit, emailEdit, phoneEdit;
     private ImageView staffImage;
     private String id;
@@ -56,6 +56,7 @@ public class StaffDetail extends AppCompatActivity {
         staffImage = findViewById(R.id.staff_photo);
         save = findViewById(R.id.save_edit_staff);
         cancel = findViewById(R.id.cancel_edit_staff);
+        activeJobs = findViewById(R.id.staff_job_count);
 
         Intent intent = getIntent();
         id = intent.getStringExtra("uid");
@@ -69,6 +70,7 @@ public class StaffDetail extends AppCompatActivity {
                 role.setText(snapshot.get("role").toString());
                 email.setText(snapshot.get("email").toString());
                 phone.setText(snapshot.get("phone").toString());
+                activeJobs.setText(snapshot.get("activeJob").toString());
                 new DownloadImageTask(staffImage).execute(snapshot.get("photo").toString());
             }
         });

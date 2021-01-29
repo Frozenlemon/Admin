@@ -1,6 +1,5 @@
 package com.company.admin.adapter;
 
-
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -22,16 +21,16 @@ import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.io.InputStream;
 
-public class StaffAdapter extends FirestoreRecyclerAdapter<Staff, StaffAdapter.StaffHolder> {
+public class CustomStaffAdapter extends FirestoreRecyclerAdapter<Staff, CustomStaffAdapter.CustomStaffHolder> {
 
-    private StaffAdapter.OnItemClickListener listener;
+    private OnItemClickListener listener;
 
-    public StaffAdapter(@NonNull FirestoreRecyclerOptions<Staff> options) {
+    public CustomStaffAdapter(@NonNull FirestoreRecyclerOptions<Staff> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull StaffAdapter.StaffHolder holder, int position, @NonNull Staff model) {
+    protected void onBindViewHolder(@NonNull CustomStaffHolder holder, int position, @NonNull Staff model) {
         holder.textViewName.setText(model.getName());
         holder.textViewEmail.setText(model.getEmail());
         holder.textViewRole.setText(model.getRole());
@@ -40,24 +39,24 @@ public class StaffAdapter extends FirestoreRecyclerAdapter<Staff, StaffAdapter.S
 
     @NonNull
     @Override
-    public StaffHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.staff_item, parent,false);
-        return new StaffHolder(v);
+    public CustomStaffHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_staff_item, parent,false);
+        return new CustomStaffHolder(v);
     }
 
-    class StaffHolder extends RecyclerView.ViewHolder {
+    public class CustomStaffHolder extends RecyclerView.ViewHolder {
 
         TextView textViewName;
         TextView textViewRole;
         TextView textViewEmail;
         ImageView staffImage;
 
-        public StaffHolder(@NonNull View itemView) {
+        public CustomStaffHolder(@NonNull View itemView) {
             super(itemView);
-            textViewName = itemView.findViewById(R.id.staff_name);
-            textViewRole = itemView.findViewById(R.id.staff_role);
-            textViewEmail = itemView.findViewById(R.id.staff_email);
-            staffImage = itemView.findViewById(R.id.staff_image);
+            textViewName = itemView.findViewById(R.id.custom_staff_name);
+            textViewRole = itemView.findViewById(R.id.custom_staff_role);
+            textViewEmail = itemView.findViewById(R.id.custom_staff_email);
+            staffImage = itemView.findViewById(R.id.custom_staff_image);
 
             itemView.setOnClickListener(v -> {
                 int position = getAdapterPosition();
@@ -72,7 +71,7 @@ public class StaffAdapter extends FirestoreRecyclerAdapter<Staff, StaffAdapter.S
         void onItemClick(DocumentSnapshot documentSnapshot, int position);
     }
 
-    public void setOnItemClickListener(StaffAdapter.OnItemClickListener listener){
+    public void setOnItemClickListener(CustomStaffAdapter.OnItemClickListener listener){
         this.listener = listener;
     }
 

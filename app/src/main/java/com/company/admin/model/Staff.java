@@ -61,6 +61,10 @@ public class Staff {
         this.activeJob = activeJob;
     }
 
+    public void setActiveJob(){
+        this.activeJob = 0;
+    }
+
     public String getPhoto() {
         return photo;
     }

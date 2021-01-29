@@ -18,13 +18,14 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import java.util.ArrayList;
+
 
 public class ProductFragment extends Fragment {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference productRef = db.collection("products");
 
-    private RecyclerView recyclerView;
 
     private ProductAdapter adapter;
 
@@ -35,8 +36,6 @@ public class ProductFragment extends Fragment {
         setUpRecyclerView(view);
         FloatingActionButton buttonAddProduct = view.findViewById(R.id.button_add_product);
         buttonAddProduct.setOnClickListener(v -> startActivity(new Intent(view.getContext(), NewProduct.class)));
-
-
         return view;
     }
 
@@ -54,6 +53,7 @@ public class ProductFragment extends Fragment {
 
         adapter.setOnItemClickListener((documentSnapshot, position) -> {
             Intent intent = new Intent(view.getContext(), ProductDetail.class);
+            System.out.println(documentSnapshot.getId());
             intent.putExtra("uid", documentSnapshot.getId());
             startActivity(intent);
         });

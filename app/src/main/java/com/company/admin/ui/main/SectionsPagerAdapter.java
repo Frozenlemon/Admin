@@ -7,8 +7,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.company.admin.OrderFragment;
 import com.company.admin.ProductFragment;
 import com.company.admin.R;
+import com.company.admin.StaffFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -30,10 +32,15 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
         switch (position){
+            case 0:
+                return new OrderFragment();
+            case 1:
+                return new StaffFragment();
             case 2:
                 return new ProductFragment();
+            default:
+                return null;
         }
-        return new ProductFragment();
     }
 
     @Nullable
@@ -45,6 +52,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         // Show 2 total pages.
-        return 2;
+        return 3;
     }
 }

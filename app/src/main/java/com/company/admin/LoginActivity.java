@@ -1,8 +1,12 @@
 package com.company.admin;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,6 +38,17 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(v -> authenticate());
         db = FirebaseFirestore.getInstance();
         userRef = db.collection("staffs");
+        if (ActivityCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.CAMERA},1);
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},2);
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},2);
+        }
     }
 
     private void authenticate (){
@@ -48,8 +63,8 @@ public class LoginActivity extends AppCompatActivity {
                         finish();
                     }
                     else {
-                        auth.signOut();
                         Toast.makeText(this, "You do not have permission to access this app",Toast.LENGTH_SHORT);
+                        auth.signOut();
                     }
                 });
             }

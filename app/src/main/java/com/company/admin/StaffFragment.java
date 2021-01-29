@@ -21,7 +21,7 @@ import com.google.firebase.firestore.Query;
 public class StaffFragment extends Fragment {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference productRef = db.collection("staffs");
+    private CollectionReference staffRef = db.collection("staffs");
     private StaffAdapter adapter;
 
     @Override
@@ -35,7 +35,7 @@ public class StaffFragment extends Fragment {
     }
 
     private void setUpRecyclerView(View view){
-        Query query = productRef.orderBy("name", Query.Direction.DESCENDING);
+        Query query = staffRef.orderBy("name", Query.Direction.DESCENDING);
         FirestoreRecyclerOptions<Staff> options = new FirestoreRecyclerOptions.Builder<Staff>()
                 .setQuery(query, Staff.class)
                 .build();

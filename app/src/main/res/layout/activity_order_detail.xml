@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OrderDetail">
+
+    <TextView
+        android:id="@+id/order_id_detail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:text="orderId"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/createdDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="createdDate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/order_id_detail" />
+
+    <TextView
+        android:id="@+id/driver"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="driver"
+        app:layout_constraintEnd_toEndOf="@+id/Status"
+        app:layout_constraintStart_toStartOf="@+id/createdDate"
+        app:layout_constraintTop_toBottomOf="@+id/createdDate" />
+
+    <TextView
+        android:id="@+id/Status"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="status"
+        app:layout_constraintEnd_toEndOf="@+id/order_id_detail"
+        app:layout_constraintTop_toTopOf="@+id/createdDate" />
+
+    <TextView
+        android:id="@+id/total_shipping"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="total shipping"
+        app:layout_constraintEnd_toEndOf="@+id/driver"
+        app:layout_constraintStart_toStartOf="@+id/driver"
+        app:layout_constraintTop_toBottomOf="@+id/driver" />
+
+    <Button
+        android:id="@+id/Assign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:backgroundTint="#1BA3C5"
+        android:text="Assign"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/driver"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/total_shipping"
+        app:layout_constraintTop_toBottomOf="@+id/total_shipping" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
