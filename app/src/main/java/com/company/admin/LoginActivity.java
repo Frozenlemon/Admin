@@ -29,15 +29,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        auth = FirebaseAuth.getInstance();
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
-        login = findViewById(R.id.login);
-
-        login.setOnClickListener(v -> authenticate());
-        db = FirebaseFirestore.getInstance();
-        userRef = db.collection("staffs");
         if (ActivityCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -49,6 +40,15 @@ public class LoginActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},2);
         }
+        auth = FirebaseAuth.getInstance();
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
+        login = findViewById(R.id.login);
+
+        login.setOnClickListener(v -> authenticate());
+        db = FirebaseFirestore.getInstance();
+        userRef = db.collection("staffs");
+
     }
 
     private void authenticate (){
@@ -63,13 +63,13 @@ public class LoginActivity extends AppCompatActivity {
                         finish();
                     }
                     else {
-                        Toast.makeText(this, "You do not have permission to access this app",Toast.LENGTH_SHORT);
+                        Toast.makeText(this, "You do not have permission to access this app",Toast.LENGTH_LONG).show();
                         auth.signOut();
                     }
                 });
             }
             else
-                Toast.makeText(this, "Wrong email or password",Toast.LENGTH_SHORT);
+                Toast.makeText(this, "Wrong email or password",Toast.LENGTH_LONG).show();
         });
     }
 
@@ -79,15 +79,15 @@ public class LoginActivity extends AppCompatActivity {
         boolean isValid = true;
         if (emailString.isEmpty() || passwordString.isEmpty()) {
             isValid = false;
-            Toast.makeText(this, "username or password cannot be empty",Toast.LENGTH_SHORT);
+            Toast.makeText(this, "username or password cannot be empty",Toast.LENGTH_LONG).show();
         }
         if (!emailString.matches("^(.+)@company.com.vn$")){
             isValid = false;
-            Toast.makeText(this, "You dont have permission to use this app",Toast.LENGTH_SHORT);
+            Toast.makeText(this, "You dont have permission to use this app",Toast.LENGTH_LONG).show();
         }
         if (password.length() < 8) {
             isValid = false;
-            Toast.makeText(this, "password too short",Toast.LENGTH_SHORT);
+            Toast.makeText(this, "password too short",Toast.LENGTH_LONG).show();
         }
         return isValid;
     }
